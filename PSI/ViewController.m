@@ -29,6 +29,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     datePicker.date = [NSDate date];
+    datePicker.maximumDate = [NSDate date];
     
     [self requestPSI];
 }
