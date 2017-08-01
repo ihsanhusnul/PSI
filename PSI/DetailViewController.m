@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 
-@interface DetailViewController () <ChartViewDelegate> {
+@interface DetailViewController () <ChartViewDelegate, UITableViewDelegate, UITableViewDataSource> {
     
     __weak IBOutlet UILabel *dateLbl;
 }
@@ -88,6 +88,50 @@
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:7.f]];
     _chartView.data = data;
+}
+
+#pragma mark - tableview
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _readings.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[_readings[section][@"readings"] allKeys] count];
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];
+    
+    NSDictionary *reading = _readings[indexPath.section][@"readings"];
+    
+    NSArray *keys = [reading allKeys];
+    
+    [cell.textLabel setText:keys[indexPath.row]];
+    
+    NSNumber *numberString = reading[keys[indexPath.row]];
+    [cell.detailTextLabel setText:numberString.stringValue];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"headerCell"];
+    
+    NSDictionary *reading = _readings[section];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:sZ"];
+    NSDate *updateTimestamp = [formatter dateFromString:reading[@"update_timestamp"]];
+    
+    [formatter setDateFormat:@"d,MMM yy HH:mma"];
+    
+    [cell.textLabel setText:[NSString stringWithFormat:@"updated at %@", [formatter stringFromDate:updateTimestamp]]];
+    
+    return cell;
 }
 
 @end
