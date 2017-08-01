@@ -32,4 +32,4 @@ feature list on this application are:
 
 ### Screenshot
 ![PSI on Maps](https://github.com/ihsanhusnul/PSI/blob/master/ScreenShot1.png)
-![PSI Information On Table and Chart view](https://github.com/ihsanhusnul/PSI/blob/master/ScreenShot1.png)
+![PSI Information On Table and Chart view](https://github.com/ihsanhusnul/PSI/blob/master/ScreenShot2.png)
