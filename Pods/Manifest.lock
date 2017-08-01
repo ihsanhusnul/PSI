@@ -2,13 +2,16 @@ PODS:
   - Charts (3.0.2):
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
+  - Nimble (7.0.1)
 
 DEPENDENCIES:
   - Charts
+  - Nimble
 
 SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
 
-PODFILE CHECKSUM: 48776c9b84206bb7534d44e11eee0a17f1c13d24
+PODFILE CHECKSUM: 27ee7642dd846607b75bc16cd490de3fec1d2e23
 
 COCOAPODS: 1.2.1

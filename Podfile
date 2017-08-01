@@ -3,7 +3,7 @@
 
 target 'PSI' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  bhv  use_frameworks!
+  use_frameworks!
 
   # Pods for PSI
   pod 'Charts'
@@ -11,6 +11,7 @@ target 'PSI' do
   target 'PSITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Nimble'
   end
 
 end

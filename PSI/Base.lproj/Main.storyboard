@@ -39,28 +39,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nqc-kj-iu0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="483"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="6NG-Ms-KgC"/>
                                 </connections>
                             </mapView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="n45-jh-BGu">
+                                <rect key="frame" x="0.0" y="547" width="305" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="01w-BU-UrX"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="523247925.66094702">
+                                    <!--2017-08-01 02:38:45 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cN-B6-QoL">
+                                <rect key="frame" x="310" y="552" width="65" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="14N-ap-yqs"/>
+                                </constraints>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="didTapRefreshBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u0B-at-0yV"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="His-jc-5LV">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="nqc-kj-iu0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HlX-X9-jW5"/>
+                            <constraint firstItem="n45-jh-BGu" firstAttribute="top" secondItem="nqc-kj-iu0" secondAttribute="bottom" id="3r4-BT-akc"/>
+                            <constraint firstItem="nqc-kj-iu0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5OV-RB-wIK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="n45-jh-BGu" secondAttribute="bottom" id="6Vu-Bw-q5J"/>
                             <constraint firstAttribute="trailing" secondItem="nqc-kj-iu0" secondAttribute="trailing" id="Nyi-nN-kcr"/>
+                            <constraint firstItem="His-jc-5LV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QkL-ch-zAU"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3cN-B6-QoL" secondAttribute="bottom" constant="5" id="Vjc-xt-oG7"/>
                             <constraint firstItem="nqc-kj-iu0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dOP-eW-0XZ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nqc-kj-iu0" secondAttribute="bottom" id="ooq-lH-3zf"/>
+                            <constraint firstAttribute="trailing" secondItem="3cN-B6-QoL" secondAttribute="trailing" id="dTv-0E-w7j"/>
+                            <constraint firstItem="n45-jh-BGu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="n8U-an-Q77"/>
+                            <constraint firstItem="3cN-B6-QoL" firstAttribute="top" secondItem="nqc-kj-iu0" secondAttribute="bottom" constant="5" id="nrR-vd-vUl"/>
+                            <constraint firstItem="His-jc-5LV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pU0-mA-W3w"/>
+                            <constraint firstItem="3cN-B6-QoL" firstAttribute="leading" secondItem="n45-jh-BGu" secondAttribute="trailing" constant="5" id="zTt-ud-iwB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PSI of Singapore" id="DMM-nw-QGz"/>
                     <connections>
+                        <outlet property="datePicker" destination="n45-jh-BGu" id="GvZ-qY-NLb"/>
+                        <outlet property="hudIndicator" destination="His-jc-5LV" id="Fzi-8j-v0H"/>
                         <outlet property="myMapView" destination="nqc-kj-iu0" id="4J0-aU-ZHh"/>
                         <segue destination="pkB-Bv-C4g" kind="show" identifier="segueToDetail" id="KyC-Yh-4S8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="36" y="66.11694152923539"/>
         </scene>
         <!--Region-->
         <scene sceneID="9IJ-4o-KEW">

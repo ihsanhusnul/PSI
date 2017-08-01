@@ -12,6 +12,9 @@
 
 @interface ViewController () <MKMapViewDelegate> {
     __weak IBOutlet MKMapView *myMapView;
+    __weak IBOutlet UIDatePicker *datePicker;
+    __weak IBOutlet UIActivityIndicatorView *hudIndicator;
+    
     NSDictionary *jsonData;
 }
 
@@ -24,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    datePicker.date = [NSDate date];
     
     [self requestPSI];
 }
@@ -43,8 +48,18 @@
     }
 }
 
+- (IBAction)didTapRefreshBtn:(id)sender {
+    [self requestPSI];
+}
+
 - (void)requestPSI {
-    NSString *urlString = [NSString stringWithFormat:@"%@?%@", PSIGovDataUrl, @"date=2017-02-02"];
+    [hudIndicator startAnimating];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [formatter stringFromDate:datePicker.date];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@?date=%@", PSIGovDataUrl, dateString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
     [request setHTTPMethod:@"GET"];
@@ -52,6 +67,11 @@
     [request setValue:@"uWMhqwnJJvul39UWGOGh9VS6arST3bFK" forHTTPHeaderField:@"api-key"];
     
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hudIndicator stopAnimating];
+        });
+        
         if (error) {
             NSLog(@"error: %@", error.localizedDescription);
         }
