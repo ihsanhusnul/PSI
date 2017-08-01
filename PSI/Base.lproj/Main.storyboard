@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -72,12 +73,39 @@
                     <view key="view" contentMode="scaleToFill" id="Y0S-OS-i40">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jaw-rC-sxZ">
+                                <rect key="frame" x="16" y="66" width="343" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnv-ie-rtf" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="104" width="343" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="yNu-QM-mWF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lnv-ie-rtf" firstAttribute="top" secondItem="Jaw-rC-sxZ" secondAttribute="bottom" constant="20" id="1p7-PP-Mia"/>
+                            <constraint firstItem="lnv-ie-rtf" firstAttribute="leading" secondItem="Y0S-OS-i40" secondAttribute="leadingMargin" id="9Dm-zw-3ao"/>
+                            <constraint firstItem="Jaw-rC-sxZ" firstAttribute="leading" secondItem="Y0S-OS-i40" secondAttribute="leadingMargin" id="WZB-lE-k6L"/>
+                            <constraint firstItem="Jaw-rC-sxZ" firstAttribute="top" secondItem="pDV-D6-n5t" secondAttribute="bottom" constant="2" id="ojF-2T-tFy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jaw-rC-sxZ" secondAttribute="trailing" id="vmq-mn-jeT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lnv-ie-rtf" secondAttribute="trailing" id="wPl-oq-2Q5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="chartView" destination="lnv-ie-rtf" id="P44-On-qyv"/>
+                        <outlet property="dateLbl" destination="Jaw-rC-sxZ" id="Nnj-ig-r0i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xf0-0Z-eRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="92"/>
+            <point key="canvasLocation" x="924" y="91.304347826086968"/>
         </scene>
     </scenes>
 </document>
